@@ -1,0 +1,4 @@
+discord.py==2.3.0
+Flask==2.2.2
+nest_asyncio==1.5.7
+python-dotenv==1.0.0
