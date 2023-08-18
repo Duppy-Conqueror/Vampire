@@ -18,7 +18,7 @@ import nest_asyncio
 nest_asyncio.apply()
 
 # Uncomment when running on replit (1/2)
-from keep_alive import keep_alive
+# from keep_alive import keep_alive
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
@@ -245,7 +245,7 @@ async def JAH(ctx):
 		await ctx.send("OH BUMBO CLAAT!")
 
 # Uncomment when running on replit (2/2)
-keep_alive()
+# keep_alive()
 
 # (text) command not found error handling
 @bot.event
