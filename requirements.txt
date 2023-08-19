@@ -1,4 +1,11 @@
+aiosignal==1.1.2
+async-timeout==4.0.0a3
+attrs==17.3.0
+charset-normalizer==2.0
 discord.py==2.3.0
 Flask==2.2.2
+frozenlist==1.1.1
+multidict==4.5
 nest_asyncio==1.5.7
 python-dotenv==1.0.0
+yarl==1.0
