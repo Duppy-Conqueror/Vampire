@@ -30,25 +30,6 @@ def listBookings(date:str):
   
 	return booking_list
 
-# Not in use
-# List today's booking
-# def listBookings_today():
-#   date = str(datetime.date.today())
-#   return listBookings(date)
-
-# Not in use
-# List the bookings within 9 days (including today)
-# def listBookings_9Days():
-#   booking_list = []
-  
-#   booking_list = listBookings_today()
-  
-#   date = datetime.date.today()
-#   for i in range(8):
-#     date += datetime.timedelta(days=1)
-#     booking_list.extend(listBookings(str(date)))
-#   return booking_list
-
 # Compose an embed page to list bookings of a day
 def compose_bookings(date:str, user_input:bool = True):
 
@@ -81,7 +62,7 @@ def compose_bookings(date:str, user_input:bool = True):
 # For bot command today()
 # Return an embed page of today's bookings
 def compose_today_bookings():
-	date = datetime.date.today()
+	date = (datetime.datetime.utcnow()+datetime.timedelta(hours=8)).date()
 	oldEmbedList = compose_bookings(str(date), False)
 	title = f'Today ({str(date)}, {str(day_name[date.weekday()])})'
 	description = ''
@@ -98,7 +79,7 @@ def compose_today_bookings():
 # Return a list of embed pages of bookings, with one page per day
 def compose_all_bookings():
 	pages = []
-	date = datetime.date.today()
+	date = (datetime.datetime.utcnow()+datetime.timedelta(hours=8)).date()
 	for i in range(14):
 		embedList = compose_bookings(str(date), False)
 		pages.append(embedList)
