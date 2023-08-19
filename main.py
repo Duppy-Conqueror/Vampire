@@ -57,7 +57,7 @@ async def help(interaction: discord.Interaction):
 	response = composeHelp()
 	await interaction.response.send_message(embed=response)
 
-# List all the venues (Completed)
+# List all the venues
 @commands.guild_only()
 @bot.tree.command(description="List out all the venues")
 async def venuelist(interaction: discord.Interaction):
@@ -70,7 +70,7 @@ async def venuelist(interaction: discord.Interaction):
 		return embedList, n
 	await Pagination(interaction, get_page).navegate()
 
-# Get venue info (Completed)
+# Get venue info
 @commands.guild_only()
 @bot.tree.command(description="Get information of the venue")
 async def venueinfo(interaction: discord.Interaction, venue_code: str):
@@ -78,7 +78,7 @@ async def venueinfo(interaction: discord.Interaction, venue_code: str):
 	await interaction.response.send_message(embed=response)
 	return
 
-# List future bookings within 14 days (No input)
+# List future bookings within 14 days
 @commands.guild_only()
 @bot.tree.command(description="List out all the bookings within 14 days")
 async def showall(interaction: discord.Interaction):
@@ -91,7 +91,7 @@ async def showall(interaction: discord.Interaction):
 		return embedList, n
 	await Pagination(interaction, get_page).navegate()
 
-# List bookings on a specific day (input: date) (Completed)
+# List bookings on a specific day
 @commands.guild_only()
 @bot.tree.command(description="Show room bookings on the input date")
 async def show(interaction: discord.Interaction, date:str):
@@ -101,7 +101,7 @@ async def show(interaction: discord.Interaction, date:str):
 	await interaction.response.send_message(embed=response)
 	return
 
-# Today's booking (no input) (Completed)
+# Today's booking
 @commands.guild_only()
 @bot.tree.command(description="Show today's booking(s)")
 async def today(interaction: discord.Interaction):
@@ -110,7 +110,7 @@ async def today(interaction: discord.Interaction):
 	await interaction.response.send_message(embed=response)
 	return
 
-# Add bookings (input: date, time, venue, user) (Completed)
+# Add a new booking
 @commands.guild_only()
 @bot.tree.command(description="Add a booking to the record")
 async def add(interaction: discord.Interaction, date:str, begin:str, end:str, venue_code:str, user:str):
@@ -175,7 +175,7 @@ async def add(interaction: discord.Interaction, date:str, begin:str, end:str, ve
   
 	return
 
-# Delete bookings (input: id) (Completed)
+# Delete an existing booking
 @commands.guild_only()
 @bot.tree.command(description="Remove a booking")
 async def remove(interaction: discord.Interaction, id:str):
