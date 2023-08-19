@@ -74,7 +74,7 @@ def compose_bookings(date:str, user_input:bool = True):
 		for booking_ in booking_list:
 			description += f'Time: {booking_.begin} - {booking_.end}\nVenue: {booking_.venue}\nUser: {booking_.user}\nID: {booking_.id}\n'
 			description += '=' * 30 + '\n'
-			description = f'```{description}```'
+		description = f'```{description}```'
 		embedList = discord.Embed(colour=config.colour_info,title=title,description=description)
 		return embedList
 
