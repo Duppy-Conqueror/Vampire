@@ -1,9 +1,9 @@
 # ignore pycache
 __pycache__/
-# ignore environment file
+# ignore environment files
 .env
-# ignore .replit file
-.replit
-# ignore files
-data/venues.csv
+.venv/
+# ignore data files
+data/bookings_past.json
 data/bookings.json
+data/venues.csv
