@@ -12,7 +12,7 @@ class Confirmation(discord.ui.View):
 			return True
 		else:
 			emb = discord.Embed(
-			description="Only the author of the command can perform this action.",
+			description="Only the user of this command can perform this action.",
 			color=discord.Colour.red()
 			)
 			await interaction.response.send_message(embed=emb, ephemeral=True)
@@ -29,6 +29,6 @@ class Confirmation(discord.ui.View):
 		self.stop()
 
 	async def on_timeout(self):
-		# remove buttons on timeout
+		# Remove buttons on timeout
 		message = await self.interaction.original_response()
 		await message.edit(view=None)

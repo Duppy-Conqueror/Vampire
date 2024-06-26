@@ -15,13 +15,13 @@ class Pagination(discord.ui.View):
 			return True
 		else:
 			emb = discord.Embed(
-			description="Only the author of the command can perform this action.",
+			description="Only the user of the command can perform this action.",
 			color=discord.Colour.red()
 			)
 			await interaction.response.send_message(embed=emb, ephemeral=True)
 			return False
 
-	async def navegate(self):
+	async def navigate(self):
 		emb, self.total_pages = await self.get_page(self.index)
 		if self.total_pages == 1:
 			await self.interaction.response.send_message(embed=emb)
@@ -40,28 +40,32 @@ class Pagination(discord.ui.View):
 		self.children[2].disabled = self.index == self.total_pages
 		self.children[3].disabled = self.index == self.total_pages
 
+	# Index: 0
 	@discord.ui.button(emoji="⏮️", style=discord.ButtonStyle.blurple)
 	async def start(self, interaction: discord.Interaction, button: discord.Button):
 		self.index = 1
 		await self.edit_page(interaction)
 
+	# Index: 1
 	@discord.ui.button(emoji="◀️", style=discord.ButtonStyle.blurple)
 	async def previous(self, interaction: discord.Interaction, button: discord.Button):
 		self.index -= 1
 		await self.edit_page(interaction)
 
+	# Index: 2
 	@discord.ui.button(emoji="▶️", style=discord.ButtonStyle.blurple)
 	async def next(self, interaction: discord.Interaction, button: discord.Button):
 		self.index += 1
 		await self.edit_page(interaction)
-
+	
+	# Index: 3
 	@discord.ui.button(emoji="⏭️", style=discord.ButtonStyle.blurple)
 	async def end(self, interaction: discord.Interaction, button: discord.Button):
 		self.index = self.total_pages
 		await self.edit_page(interaction)
 
 	async def on_timeout(self):
-		# remove buttons on timeout
+		# Remove buttons on timeout
 		message = await self.interaction.original_response()
 		await message.edit(view=None)
 
